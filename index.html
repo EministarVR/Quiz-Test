@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Geothermie Quiz - Teste dein Wissen über Geothermie!">
+    <title>Geothermie Quiz</title>
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(45deg, #00c6ff, #00b3b3, #0072ff);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            border-bottom: 3px solid #005fa0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+            animation: neonFlicker 1.5s infinite alternate;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.9);
+            animation: textGlow 1.5s infinite alternate;
+        }
+
+        @keyframes neonFlicker {
+            0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 30px rgba(0, 200, 255, 0.9); }
+            100% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 70px rgba(0, 200, 255, 0.8); }
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 30px rgba(0, 255, 255, 0.9), 0 0 80px rgba(0, 255, 255, 0.7); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #212121;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #00c6ff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.8);
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.6), 0 0 25px rgba(0, 255, 255, 0.7); }
+            100% { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.9); }
+        }
+
+        .quiz-container {
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .quiz-question {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .quiz-options {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .quiz-options li {
+            background-color: #333;
+            padding: 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.3em;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .quiz-options li:hover {
+            background-color: #00c6ff;
+            color: #fff;
+            transform: scale(1.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.9);
+        }
+
+        .quiz-options li.selected {
+            background-color: #00c6ff;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.8);
+            transform: scale(1.1);
+        }
+
+        .submit-btn {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 25px 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.4em;
+            width: 100%;
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #00c6ff;
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 200, 255, 0.6);
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 1.8em;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .correct {
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 50px rgba(0, 255, 0, 0.9);
+        }
+
+        .incorrect {
+            color: #ff3333;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 50px rgba(255, 0, 0, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Geothermie Quiz</h1>
+        <p>Teste dein Wissen zur Geothermie!</p>
+    </header>
+
+    <div class="container">
+        <h2>Geothermie - Quiz</h2>
+
+        <!-- Multiple Choice Question 1 -->
+        <div class="quiz-container">
+            <div class="quiz-question">1. Was ist Geothermie?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="false">Energie aus der Sonne</li>
+                <li onclick="selectAnswer(this)" data-correct="true">Energie aus der Erdwärme</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Energie aus Windkraft</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Energie aus Biomasse</li>
+            </ul>
+        </div>
+
+        <!-- Multiple Choice Question 2 -->
+        <div class="quiz-container">
+            <div class="quiz-question">2. Wie entsteht Erdwärme?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="false"> Durch die Verdunstung von Wasser in den Ozeanen</li>
+                <li onclick="selectAnswer(this)" data-correct="true">Durch Konvektionsströme im Erdmantel und den Erdkerne</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Durch die Strahlung der Sonne auf die Erdoberfläche</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Durch die chemische Reaktion zwischen Erde und Luft</li>
+            </ul>
+        </div>
+
+        <!-- More Questions... -->
+
+        <!-- Multiple Choice Question 3 -->
+        <div class="quiz-container">
+            <div class="quiz-question">3. Welche Art der Geothermie wird hauptsächlich für Wärmepumpen in Haushalten genutzt?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="false">Tiefengeothermie</li>
+                <li onclick="selectAnswer(this)" data-correct="true">Oberflächennahe Geothermie</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Meeresgeothermie</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Biomasse-Geothermie</li>
+            </ul>
+        </div>
+
+        <!-- Multiple Choice Question 4 -->
+        <div class="quiz-container">
+            <div class="quiz-question">4. Was ist ein Geothermiekraftwerk?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="false">Eine Anlage, die Windenergie zur Stromerzeugung nutzt</li>
+                <li onclick="selectAnswer(this)" data-correct="true">Eine Anlage zur Nutzung von Erdwärme zur Stromerzeugung</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Eine Anlage zur Speicherung von Solarenergie</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Eine Wasserkraftanlage</li>
+            </ul>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-question">5. Wie funktioniert ein Geothermiekraftwerk?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="false"> Durch die Umwandlung von Windenergie in elektrische Energie</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Durch die Nutzung von Solarenergie zur Erwärmung von Wasser</li>
+                <li onclick="selectAnswer(this)" data-correct="true">Durch die Förderung von heißem Wasser, das Wärme an eine Turbine überträgt</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Durch die Nutzung von fossilen Brennstoffen zur Energieerzeugung</li>
+            </ul>
+        </div>
+       
+        <div class="quiz-container">
+            <div class="quiz-question">6. Welches ist ein Vorteil der Geothermie?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="true"> Sehr geringe CO₂-Emissionen und konstante Energiequelle</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Billiger Anschaffungspreis</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Die Energiequelle ist nicht nachhaltig und abhängig vom Wetter</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Sehr leichter Aufbau</li>
+            </ul>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-question">7. Was ist ein Nachteil der Geothermie?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="false"> Sehr niedrige Betriebskosten und geringe geologische Risiken</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Billiger Anschaffungspreis</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Die Energiequelle ist nicht abhängig vom Wetter</li>
+                <li onclick="selectAnswer(this)" data-correct="true">Hohe Anfangskosten und geologische Risiken wie Erdbeben</li>
+            </ul>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-question">8. Was beschreibt der Wirkungsgrad eines Geothermiekraftwerks?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="true">  Das Verhältnis der erzeugten Energie zur eingesetzten Energie</li>
+                <li onclick="selectAnswer(this)" data-correct="false"> Die Menge an Wasser, die während des Prozesses benötigt wird</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Die Temperatur des geförderten Wassers</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Die Zeit, die benötigt wird, um die Energie zu erzeugen</li>
+            </ul>
+        </div>
+
+
+        <div class="quiz-container">
+            <div class="quiz-question">9. Welche der folgenden Aussagen trifft auf tiefengeothermische Anlagen zu?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="true">  Sie sind für die Stromerzeugung aus Erdwärme verantwortlich</li>
+                <li onclick="selectAnswer(this)" data-correct="false"> Sie nutzen hauptsächlich Windenergie zur Stromerzeugung</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Sie werden überwiegend zur Beheizung von Privathaushalten genutzt</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Sie speichern und transformieren ausschließlich Solarenergie</li>
+            </ul>
+        </div>
+
+
+        <div class="quiz-container">
+            <div class="quiz-question">Finale Frage: Welche der folgenden Aussagen über die Nutzung von Geothermie zur Stromerzeugung ist korrekt?</div>
+            <ul class="quiz-options">
+                <li onclick="selectAnswer(this)" data-correct="false"> Tiefengeothermische Anlagen zur Stromerzeugung benötigen keine Wasserressourcen, da sie ausschließlich auf Erdgas angewiesen sind.</li>
+                <li onclick="selectAnswer(this)" data-correct="false"> Oberflächennahe Geothermie kann zur Stromerzeugung genutzt werden, da sie eine konstant hohe Temperatur hat, die für Turbinen geeignet ist.</li>
+                <li onclick="selectAnswer(this)" data-correct="true">Die Effizienz von Geothermiekraftwerken wird hauptsächlich durch die geologische Beschaffenheit des Standorts bestimmt, einschließlich der Tiefe und Temperatur des erhitzten Wassers.</li>
+                <li onclick="selectAnswer(this)" data-correct="false">Geothermische Kraftwerke können nur in Regionen mit hoher seismischer Aktivität betrieben werden, um die erforderliche Temperatur für die Stromerzeugung zu erreichen.</li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- Submit Button -->
+        <button class="submit-btn" onclick="calculateScore()">Quiz Beenden</button>
+
+        <!-- Result Display -->
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        let score = 0;
+        const totalQuestions = document.querySelectorAll('.quiz-container').length;
+
+        function selectAnswer(element) {
+            const selected = element;
+            const parent = selected.parentNode;
+            const options = parent.querySelectorAll('li');
+            options.forEach(option => {
+                option.classList.remove('selected');
+            });
+            selected.classList.add('selected');
+        }
+
+        function calculateScore() {
+            const questions = document.querySelectorAll('.quiz-container');
+            questions.forEach(question => {
+                const selectedOption = question.querySelector('.selected');
+                if (selectedOption) {
+                    const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+                    if (isCorrect) {
+                        score++;
+                    }
+                    selectedOption.classList.add(isCorrect ? 'correct' : 'incorrect');
+                }
+            });
+
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `Du hast ${score} von ${totalQuestions} Fragen richtig beantwortet! Gut gemacht! `;
+            resultElement.classList.add(score === totalQuestions ? 'correct' : 'incorrect');
+        }
+    </script>
+</body>
+</html>
