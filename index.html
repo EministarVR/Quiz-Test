@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Geothermie Quiz - Teste dein Wissen über Geothermie!">
-    <title>Geothermie Quiz</title>
+    <title>Geothermie Quiz - Your Daily Tool</title>
     <link rel="icon" href="logo.ico" type="image/x-icon">
     <style>
         body, html {
@@ -165,12 +165,37 @@
             color: #ff3333;
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 50px rgba(255, 0, 0, 0.9);
         }
+
+        footer {
+            background-color: #1e1e1e;
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #333;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #007aff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+
     </style>
 </head>
 <body>
     <header>
-        <h1>Geothermie Quiz</h1>
-        <p>Teste dein Wissen zur Geothermie!</p>
+        <h1>Geothermie Quiz von Your Daily Tool!</h1>
+        <p>Teste dein Wissen von der Präsentation zur Geothermie!</p>
     </header>
 
     <div class="container">
@@ -298,6 +323,12 @@
         <!-- Result Display -->
         <div id="result" class="result"></div>
     </div>
+
+    <footer>
+        <p>© 2024 Your Daily Tool. Alle Rechte vorbehalten. <a href="https://www.dailytool.de">Zur echten Website!</a></p>
+    </footer>
+
+
 
     <script>
         let score = 0;
